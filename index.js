@@ -43,7 +43,11 @@ app.use((err, req, res, next) => {
     res.status(500).send('Something broke!')
 })
 
-connectToMysql()
-app.listen(PORT, "0.0.0.0", () => {
+//connectToMysql()
+app.get('/', async (req, res) => {
+    const response = "nothing"
+    res.send(response)
+})
+app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`)
 })
