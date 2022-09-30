@@ -20,10 +20,19 @@ function connectToMysql() {
 
 function isConnectionOk() {
     return new Promise((resolve, reject) => {
+        mysqlConnection = mysql.createConnection({
+            uri: process.env.DB_URI,        // example => mysql://user:password@localhost:port/dbName
+        })
+        mysqlConnection.connect((err) => {
+            if (!err) {
+                console.log('DB connection succeeded.');
+            } else {
+                console.error(err);
+            }
+        });
         mysqlConnection.ping((err) => {
             if (err) {
                 console.error(err);
-                connectToMysql();
                 resolve(false)
             } else {
                 resolve(true)
