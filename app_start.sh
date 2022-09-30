@@ -1,5 +1,7 @@
+#!/bin/bash
+
 echo "app_start"
 pwd
-# npm i 
+npm i 
 # npm install pm2 -g
 # pm2 start index.js
