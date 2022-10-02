@@ -15,18 +15,14 @@ client.getSecretValue({SecretId: secretName}, function(err, data) {
         console.log("error in geting secret");
     }
     else {
-        // Decrypts secret using the associated KMS key.
-        // Depending on whether the secret is a string or binary, one of these fields will be populated.
         if ('SecretString' in data) {
             secret = JSON.parse(data.SecretString);
-            DB_URI = secret;
+            DB_URI = secret.DB_URI;
             console.log(DB_URI);
         } else {
             console.log("error in secret");
         }
     }
-   
-    // Your code goes here. 
 });
 
 const mysql = require('mysql2');
@@ -36,23 +32,10 @@ require("express-async-errors")
 const app = express()
 const PORT = process.env.PORT
 
-function connectToMysql() {
-    mysqlConnection = mysql.createConnection({
-        uri: DB_URI,        // example => mysql://user:password@localhost:port/dbName
-    })
-    mysqlConnection.connect((err) => {
-        if (!err) {
-            console.log('DB connection succeeded.');
-        } else {
-            console.error(err);
-        }
-    });
-}
-
 function isConnectionOk() {
     return new Promise((resolve, reject) => {
         mysqlConnection = mysql.createConnection({
-            uri: process.env.DB_URI,        // example => mysql://user:password@localhost:port/dbName
+            uri: DB_URI,        // example => mysql://user:password@localhost:port/dbName
         })
         mysqlConnection.connect((err) => {
             if (!err) {
