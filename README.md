@@ -1,4 +1,4 @@
-# simple HTTP API that used to connect the our DB solution
+# AWS-RDS-Connection-Check-by-Using-NodeJS-API
 
 
 ## _Description:_
@@ -11,6 +11,18 @@ b- Create a simple HTTP API that used to connect the our DB solution
 ## _Acceptance Criteria:_
 Please do not create a public repo. This challenge is only shared with the interviewers at BespinGlobal MEA, and for obvious reasons we'd like it to remain this way.
 
+## Task Info
+Here is some info about my solution to solving the task:
+
+    a- The Cloud Provider is AWS.
+    
+    b- The IAAC technology is Terraform.
+    
+    c- The backend infrastructure is deployed on AWS EC2.
+    
+    d- The application is written in NodeJs and uses Express Framework.
+    
+    e- The RDS DB Engine is MySQL.
 
 ## _Architecture:_ 
 ![Design](./infra.jpg "infra")
